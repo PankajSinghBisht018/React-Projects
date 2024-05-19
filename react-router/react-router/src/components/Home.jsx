@@ -2,6 +2,7 @@ import React from 'react';
 
 const Home = () => {
   return (
+    <>
     <div className="w-full bg-gray-500 py-10">
       <div className="max-w-screen-xl mx-auto px-4">
         <h1 className="text-4xl font-bold text-center mb-8">Welcome to Our Website</h1>
@@ -30,6 +31,8 @@ const Home = () => {
         </div>
       </div>
     </div>
+    
+    </>
   );
 };
 
