@@ -4,16 +4,17 @@ import './index.css';
 import App from './App';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import rootReducer from './reducers';
+import todoReducer from './todoSlice'; 
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    todos: todoReducer, 
+  },
 });
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-  <App />
-</Provider>
+    <App />
+  </Provider>
 );
