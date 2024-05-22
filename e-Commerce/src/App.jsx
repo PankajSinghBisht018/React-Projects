@@ -1,7 +1,6 @@
 import Navbar from './components/Navbar'
 import Products from './components/Products';
 import Categories from './components/Categories';
-import About from './components/About';
 import Contact from './components/Contact';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css'
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart/>} />
       </Routes>
