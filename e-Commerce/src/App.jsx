@@ -7,6 +7,7 @@ import './index.css'
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
+import Login from './components/Login';
 function App() {
 
 
@@ -19,8 +20,11 @@ function App() {
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories" element={<Categories />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contact" element={<Contact />} /> 
+        <Route path="/login" element={<Login/>} />
         <Route path="/cart" element={<Cart/>} />
+       
+
       </Routes>
       <Footer/>
     </Router>

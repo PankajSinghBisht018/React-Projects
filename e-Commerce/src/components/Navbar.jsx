@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faCartShopping, faSearch, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import logo from './logo.png';
 import { motion } from 'framer-motion';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Button, IconButton, Hidden } from '@mui/material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import { useAuth0 } from "@auth0/auth0-react"
 
 function Navbar({ Link1, Link2, Link3, Link5 }) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { loginWithRedirect, logout ,isAuthenticated, user} = useAuth0();
+
+
   const handleSearch = (event) => {
     event.preventDefault();
-    console.log('Search check ');
+    console.log('Search check');
   };
 
   const toggleMenu = () => {
@@ -25,74 +34,100 @@ function Navbar({ Link1, Link2, Link3, Link5 }) {
           </NavLink>
         </div>
 
-        <div className="hidden md:flex space-x-4">
-          <ul className="md:flex space-x-8 text-gray-400">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
-                }
-              >
-                {Link1}
-              </NavLink>
-
-            </li>
-            <li>
-              <NavLink
-                to="/products"
-                className={({ isActive }) =>
-                  `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
-                }
-              >
-                {Link2}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/categories"
-                className={({ isActive }) =>
-                  `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
-                }
-              >
-                {Link3}
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
-                }
-              >
-                {Link5}
-              </NavLink>
-            </li>
-          </ul>
-        </div>
+        <Hidden mdDown>
+          <div className="flex space-x-4">
+            <ul className="flex space-x-8 text-gray-400">
+              <li>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
+                  }
+                >
+                  {Link1}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/products"
+                  className={({ isActive }) =>
+                    `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
+                  }
+                >
+                  {Link2}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/categories"
+                  className={({ isActive }) =>
+                    `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
+                  }
+                >
+                  {Link3}
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/contact"
+                  className={({ isActive }) =>
+                    `block py-2 ${isActive ? 'text-rose-950 ' : 'text-gray-700'} relative hover:text-rose-950 hover:after:bg-rose-950 hover:after:h-0.5 hover:after:block hover:after:content:'' hover:after:absolute hover:after:w-full hover:after:bottom-0`
+                  }
+                >
+                  {Link5}
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </Hidden>
 
         <div className="flex items-center space-x-5">
-          <form onSubmit={handleSearch} className="hidden md:flex items-center">
-            <input
-              type="text"
-              placeholder="Search..."
-              className="border rounded-l-lg focus:outline-none"
-            />
-            <button type="submit" className="bg-gray-700 text-white py-1 px-2 rounded-r-lg">
-              <FontAwesomeIcon icon={faSearch} />
-            </button>
-          </form>
+          <Hidden mdDown>
+            <form onSubmit={handleSearch} className="flex items-center">
+              <input
+                type="text"
+                placeholder="Search..."
+                className="border rounded-l-lg focus:outline-none"
+              />
+              <button type="submit" className="bg-gray-700 text-white py-1 px-2 rounded-r-lg">
+                <FontAwesomeIcon icon={faSearch} />
+              </button>
+            </form>
+          </Hidden>
 
-          <Link to="/profile" className="hidden md:flex rounded-xl text-gray-700 mr-2">
-            <FontAwesomeIcon icon={faUser} />
-          </Link>
-          <Link to="/cart" className="hidden md:flex rounded-xl text-gray-700">
-            <FontAwesomeIcon icon={faCartShopping} />
-          </Link>
+          <Hidden mdDown>
+            <Link to="/login" className="flex rounded-xl text-gray-700 mr-2">
+              <Button endIcon={<AccountCircleIcon />}>Login</Button>
+            </Link>   
 
-          <button className="md:hidden text-gray-700" onClick={toggleMenu}>
-            <FontAwesomeIcon icon={menuOpen ? faTimes : faBars} />
-          </button>
+
+
+
+
+
+{
+  isAuthenticated ?  isAuthenticated && (
+  <Link className="flex rounded-xl text-gray-700 mr-2">
+              <Button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}><img src={user.picture} className='h-10 rounded-full' /></Button> 
+              
+            </Link>):
+  (<Link className="flex rounded-xl text-gray-700 mr-2">
+              <Button endIcon={<AccountCircleIcon />} variant='contained' onClick={() => loginWithRedirect()}>Login</Button>
+             
+            </Link>)
+}
+
+
+            <Link to="/cart" className="flex rounded-xl text-gray-700">
+              <Button endIcon={<ShoppingCartIcon />}>Cart</Button>
+            </Link>
+          </Hidden>
+
+          <Hidden mdUp>
+            <IconButton className="text-gray-700" onClick={toggleMenu}>
+              {menuOpen ? <CloseIcon /> : <MenuIcon />}
+            </IconButton>
+          </Hidden>
         </div>
       </div>
 
@@ -161,17 +196,15 @@ function Navbar({ Link1, Link2, Link3, Link5 }) {
               </form>
             </li>
             <li>
-              <Link to="/profile" className="block rounded-xl text-gray-700 py-2" onClick={toggleMenu}>
-                <FontAwesomeIcon icon={faUser} />
+              <Link to="/login" className="block rounded-xl text-gray-700 py-2" onClick={toggleMenu}>
+                <Button endIcon={<AccountCircleIcon />} onClick={() => loginWithRedirect()}>Login</Button>
               </Link>
             </li>
             <li>
-           
               <Link to="/cart" className="block rounded-xl text-gray-700 py-2" onClick={toggleMenu}>
-                <FontAwesomeIcon icon={faCartShopping} />
+                <Button endIcon={<ShoppingCartIcon />}>Cart</Button>
               </Link>
             </li>
-
           </ul>
         </motion.div>
       )}
