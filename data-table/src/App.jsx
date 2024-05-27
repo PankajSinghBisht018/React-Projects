@@ -1,14 +1,15 @@
-import Navbar from "./components/Navbar"
 import TableFetch from "./components/TableFetch"
-
+import { TableProvider } from "./context/TableContext"
+import Navbar from "./components/Navbar"
 
 function App() {
- 
-
   return (
     <>
-    <Navbar/>
-       <TableFetch/>
+<TableProvider>
+<Navbar/>
+<TableFetch/>
+</TableProvider>
+ 
     </>
   )
 }

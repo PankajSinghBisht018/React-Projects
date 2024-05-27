@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -15,18 +14,12 @@ import IconButton from '@mui/material/IconButton';
 import AddIcon from '@mui/icons-material/Add';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import { TableContext } from '../context/TableContext';
+import { useContext } from 'react';
+
 
 function TableFetch() {
-  useEffect(() => {
-    const fetchTable = async () => {
-      const response = await axios.get("https://jsonplaceholder.typicode.com/users");
-      const data = response.data;
-      setTable(data);
-    };
-    fetchTable();
-  }, []);
-
-  const [table, setTable] = useState([]);
+  const { table, setTable } = useContext(TableContext);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const indexLastData = currentPage * itemsPerPage;
@@ -43,7 +36,6 @@ function TableFetch() {
   });
 
   const [searchData, setSearchData] = useState('');
-  
 
   const handleSearch = (value) => {
     setSearchData(value);
@@ -80,8 +72,9 @@ function TableFetch() {
       [name]: value
     }));
   };
-  
-const [sorting, setSorting] = useState({ column: 'name', order: 'asc' });
+
+  const [sorting, setSorting] = useState({ column: 'name', order: 'asc' });
+
   const handleSort = () => {
     const sortedData = [...table];
     const sortOrder = sorting.order === 'asc' ? 'desc' : 'asc';
