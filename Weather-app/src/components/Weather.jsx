@@ -21,13 +21,11 @@ const Weather = () => {
   
   const fetchRandomImage = async () => {
     const response = await axios.get(
-      'https://api.unsplash.com/photos/Random',
+      'https://api.unsplash.com/photos/random',
       {
         params: {
           query: 'weather',
-        },
-        headers: {
-          Authorization: 'Client-ID TUmz99tuo7dLq9MJWDUfMp1pznueF7hAiKDhKkDPJiM',
+          client_id: 'Rxp2BCKd-vTWqqUGG5oKD4_20iHiiTS1qTbKcW85bGg',
         },
       }
     );
