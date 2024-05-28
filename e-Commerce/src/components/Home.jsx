@@ -12,7 +12,7 @@ function Home() {
     const fetchCarouselImages = async () => {
       const response = await axios.get('https://api.unsplash.com/search/photos', {
         params: {
-          query: 'mens fashion',
+          query: 'Iphone',
           per_page: 3,
           client_id: 'Rxp2BCKd-vTWqqUGG5oKD4_20iHiiTS1qTbKcW85bGg',
         }
@@ -27,7 +27,7 @@ function Home() {
     const fetchCardImages = async () => {
       const response = await axios.get('https://api.unsplash.com/search/photos', {
         params: {
-          query: 'men fashion ',
+          query: 'iPhones',
           per_page: 10,
           client_id: 'Rxp2BCKd-vTWqqUGG5oKD4_20iHiiTS1qTbKcW85bGg',
         }

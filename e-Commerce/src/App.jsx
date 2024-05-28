@@ -7,7 +7,7 @@ import './index.css'
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Cart from './components/Cart';
-import Login from './components/Login';
+import About from './components/About';
 function App() {
 
 
@@ -15,13 +15,14 @@ function App() {
     <>
   
   <Router>
-    <Navbar Link1="Home" Link2="Products" Link3="Categories" Link4="About"  Link5="Contact"/>
+    <Navbar Link1="Home" Link2="Products" Link3="Categories" Link4="About" Link5="Contact"/>
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/products" element={<Products />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/contact" element={<Contact />} /> 
-        <Route path="/login" element={<Login/>} />
+        {/* <Route path="/login" element={<Login/>} /> */}
+        <Route path="/about" element={<About/>} />
         <Route path="/cart" element={<Cart/>} />
        
 
