@@ -3,12 +3,9 @@ import axios from 'axios';
 
 export const fetchWeather = (city) => async (dispatch) => {
   dispatch(fetchWeatherStart());
-  try {
     const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cb72d7b2c0efdb3687e9f8274f23e822`);
+    
     dispatch(fetchWeatherSuccess(response.data));
-  } catch (error) {
-    dispatch(fetchWeatherFailure(error.message));
-  }
 };
 
 const weatherSlice = createSlice({

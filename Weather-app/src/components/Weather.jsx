@@ -18,23 +18,20 @@ const Weather = () => {
       dispatch(fetchWeather(city));
     }
   };
+  
   const fetchRandomImage = async () => {
-    try {
-      const response = await axios.get(
-        'https://api.unsplash.com/photos/random',
-        {
-          params: {
-            query: 'sky',
-          },
-          headers: {
-            Authorization: 'Client-ID TUmz99tuo7dLq9MJWDUfMp1pznueF7hAiKDhKkDPJiM',
-          },
-        }
-      );
-      setImageUrl(response.data.urls.regular);
-    } catch (error) {
-      console.error('Error fetching image from Unsplash', error);
-    }
+    const response = await axios.get(
+      'https://api.unsplash.com/photos/Random',
+      {
+        params: {
+          query: 'weather',
+        },
+        headers: {
+          Authorization: 'Client-ID TUmz99tuo7dLq9MJWDUfMp1pznueF7hAiKDhKkDPJiM',
+        },
+      }
+    );
+    setImageUrl(response.data.urls.regular);
   };
 
   useEffect(() => {
