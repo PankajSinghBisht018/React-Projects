@@ -49,7 +49,7 @@ const Weather = () => {
       <Typography variant="h3" color='Black' align="center" gutterBottom >
         Weather App
       </Typography>
-      <Paper elevation={3} className="p-4">
+      <Paper elevation={3} className="p-4" style={{ backgroundColor: 'rgba(0, 0, 0, 0.1)' }}>
         <Grid container spacing={2} alignItems="center">
           <Grid item xs={12} sm={8}>
             <TextField
