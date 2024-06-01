@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../features/CartSlice';
 import { motion } from 'framer-motion';
+import { Helmet } from 'react-helmet';
+import {Button,Grid,Typography,Card,CardContent,CardMedia} from '@mui/material';
 
 function Products() {
   const [products, setProducts] = useState([]);
@@ -42,59 +44,80 @@ function Products() {
   };
 
   return (
-    <div className="container mx-auto bg-gray-100 py-8">
-      <h1 className="text-3xl text-center font-bold mb-4">Products</h1>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mx-1">
-        {currentProducts.map((product) => (
-          <motion.div
-            key={product.id}
-            className="bg-white shadow-lg p-4 rounded-lg flex flex-col"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>SnapMart- Products</title>
+        <meta name='description' content='Products' />
+        <link rel="icon" type="image/png" href="/logo.png" />
+      </Helmet>
+      <div className="container mx-auto py-8">
+        <Typography variant="h3" align="center" gutterBottom>
+          Products
+        </Typography>
+        <Grid container spacing={3}>
+          {currentProducts.map((product) => (
+            <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+              <motion.div
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Card sx={{ display: 'flex', flexDirection: 'column', height: '80vh' }}>
+                  <CardMedia
+                    component="img"
+                    src={product.image}
+                    alt=""
+                    style={{ objectFit: 'cover', height: '200px' }}
+                  />
+                  <CardContent sx={{ flex: '1 0 auto' }}>
+                    <Typography variant="h6" gutterBottom>
+                      {product.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" paragraph>
+                      {product.description.split(' ').slice(0, 20).join(' ')}...
+                    </Typography>
+                    <Typography variant="h5" color="text.primary" paragraph>
+                      ${product.price}
+                    </Typography>
+                  </CardContent>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => handleAddToCart(product)}
+                    style={{ marginLeft:"20px" ,marginRight:"20px" ,marginBottom:"20px"}}
+                  >
+                    Add to Cart
+                  </Button>
+                </Card>
+              </motion.div>
+            </Grid>
+          ))}
+        </Grid>
+        <br />
+        <div className="flex justify-between bottom-0 mx-4">
+          <Button
+            variant="contained"
+            onClick={handlePrev}
+            disabled={currentPage === 1}
           >
-            <motion.img
-              src={product.image}
-              alt=""
-              className="w-full h-48 object-cover mb-4"
-            />
-            <h2 className="text-xl font-bold mb-2">{product.title}</h2>
-            <p className="text-gray-600 mb-4">{product.description}</p>
-            <p className="text-gray-900 font-bold mb-4">${product.price}</p>
-            <motion.button
-              className="mt-auto bg-gray-700 text-white py-2 px-4 rounded"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9, backgroundColor: '#3B0D0C' }}
-              onClick={() => handleAddToCart(product)}
-            >
-              Add to Cart
-            </motion.button>
-          </motion.div>
-        ))}
+            Prev
+          </Button>
+          <Typography>
+            Page {currentPage} of {totalPages}
+          </Typography>
+          <Button
+            variant="contained"
+            onClick={handleNext}
+            disabled={currentPage === totalPages}
+          >
+            Next
+          </Button>
+        </div>
       </div>
-      <br />
-      <div className="flex justify-between bottom-0 mx-4">
-        <button
-          className={`mt-auto py-2 px-4 bottom-0 rounded ${currentPage === 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gray-700 text-white'}`}
-          onClick={handlePrev}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </button>
-        <span>
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          className={`mt-auto py-2 px-4 bottom-0 rounded ${currentPage === totalPages ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-gray-700 text-white'}`}
-          onClick={handleNext}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 
