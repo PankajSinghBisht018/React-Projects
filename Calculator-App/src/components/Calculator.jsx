@@ -63,52 +63,52 @@ function Calculator() {
         />
         <Grid container spacing={1}>
           <Grid item xs={3}>
-            <ShinyButton text="1" onClick={handleButtonClick} data-value="1" className="h-16 w-full" />
+            <ShinyButton text="1" onClick={handleButtonClick} data-value="1" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="2" onClick={handleButtonClick} data-value="2" className="h-16 w-full" />
+            <ShinyButton text="2" onClick={handleButtonClick} data-value="2" className="h-16 w-full bg-cyan-500 " />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="3" onClick={handleButtonClick} data-value="3" className="h-16 w-full" />
+            <ShinyButton text="3" onClick={handleButtonClick} data-value="3" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="+" onClick={handleButtonClick} data-value="+" className="h-16 w-full" />
+            <ShinyButton text="+" onClick={handleButtonClick} data-value="+" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="4" onClick={handleButtonClick} data-value="4" className="h-16 w-full" />
+            <ShinyButton text="4" onClick={handleButtonClick} data-value="4" className="h-16 w-full  bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="5" onClick={handleButtonClick} data-value="5" className="h-16 w-full" />
+            <ShinyButton text="5" onClick={handleButtonClick} data-value="5" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="6" onClick={handleButtonClick} data-value="6" className="h-16 w-full" />
+            <ShinyButton text="6" onClick={handleButtonClick} data-value="6" className="h-16 w-full  bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="-" onClick={handleButtonClick} data-value="-" className="h-16 w-full" />
+            <ShinyButton text="-" onClick={handleButtonClick} data-value="-" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="7" onClick={handleButtonClick} data-value="7" className="h-16 w-full" />
+            <ShinyButton text="7" onClick={handleButtonClick} data-value="7" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="8" onClick={handleButtonClick} data-value="8" className="h-16 w-full" />
+            <ShinyButton text="8" onClick={handleButtonClick} data-value="8" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="9" onClick={handleButtonClick} data-value="9" className="h-16 w-full" />
+            <ShinyButton text="9" onClick={handleButtonClick} data-value="9" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="*" onClick={handleButtonClick} data-value="*" className="h-16 w-full" />
+            <ShinyButton text="*" onClick={handleButtonClick} data-value="*" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="0" onClick={handleButtonClick} data-value="0" className="h-16 w-full" />
+            <ShinyButton text="0" onClick={handleButtonClick} data-value="0" className="h-16 w-full bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="C" onClick={handleClear} data-value="C" className="h-16 w-full" />
+            <ShinyButton text="C" onClick={handleClear} data-value="C" className="h-16 w-full  bg-cyan-500" />
           </Grid>
           <Grid item xs={3}>
-            <ShinyButton text="/" onClick={handleButtonClick} data-value="/" className="h-16 w-full" />
+            <ShinyButton text="/" onClick={handleButtonClick} data-value="/" className="h-16 w-full  bg-cyan-500" />
           </Grid>
           <Grid item xs={12}>
-            <ShinyButton text="Result" onClick={handleEvaluate} data-value="=" className="h-16 w-full" />
+            <ShinyButton text="Result" onClick={handleEvaluate} data-value="=" className="h-16 w-full  bg-cyan-500" />
           </Grid>
         </Grid>
       </Paper>
